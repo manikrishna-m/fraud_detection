@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fraud Detection</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+    }
+    h2 {
+      color: #007bff;
+    }
+    .form-control {
+      border-radius: 0.25rem;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      border-radius: 0.25rem;
+    }
+    .result {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="mb-4">Fraud Prediction</h2>
+    <form method="post" action="{{ url_for('predict_results') }}" class="needs-validation" novalidate>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="step">Step:</label>
+          <input type="number" class="form-control" id="step" name="step" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="amount">Amount:</label>
+          <input type="number" class="form-control" id="amount" name="amount" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="oldbalanceOrg">Old Balance Origin:</label>
+          <input type="number" class="form-control" id="oldbalanceOrg" name="oldbalanceOrg" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="newbalanceOrig">New Balance Origin:</label>
+          <input type="number" class="form-control" id="newbalanceOrig" name="newbalanceOrig" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="oldbalanceDest">Old Balance Destination:</label>
+          <input type="number" class="form-control" id="oldbalanceDest" name="oldbalanceDest" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="newbalanceDest">New Balance Destination:</label>
+          <input type="number" class="form-control" id="newbalanceDest" name="newbalanceDest" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="trans_type">Transaction Type:</label>
+        <select class="form-control" id="trans_type" name="trans_type" required>
+          <option value="">Select an option</option>
+          <option value="TRANSFER">TRANSFER</option>
+          <option value="PAYMENT">PAYMENT</option>
+          <option value="CASH_OUT">CASH_OUT</option>
+          <option value="DEBIT">DEBIT</option>
+          <option value="CASH_IN">CASH_IN</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+
+    {% if result is not none %}
+    <div class="result mt-4">
+      <h4>The result is: {{ 'Fraud' if result == 1 else 'Not Fraud' }}</h4>
+    </div>
+    {% endif %}
+  </div> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+</body>
+</html>
