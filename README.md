@@ -1,4 +1,3 @@
-[![favtutor.com/blog-detail...](https://images.openai.com/thumbnails/url/bos7YXicu1mUUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw4MzvKvisw2jAjxT7Isd83xz8iKcjR0N_aI9wtMr8gsyvHPdHEuKE9JT0wrcC4JNggt080KyU5NNndSKwYA1PEpsA)](https://favtutor.com/blog-details/credit-card-fraud-detection-using-machine-learning)
 
 The GitHub repository **[fraud\_detection](https://github.com/manikrishna-m/fraud_detection)** by [manikrishna-m](https://github.com/manikrishna-m) offers an end-to-end implementation of a machine learning project focused on detecting fraudulent financial transactions. This project aims to identify and prevent fraudulent activities in financial systems, enhancing security and trust.
 
